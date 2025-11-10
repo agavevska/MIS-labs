@@ -1,16 +1,9 @@
-# mis_lab1
+# Laboratory exercise
 
-A new Flutter project.
+<img width="6912" height="3456" alt="Screens" src="https://github.com/user-attachments/assets/669eeaa3-110e-44e8-9560-90ba552d9c51" />
 
-## Getting Started
+`1. Home Screen`
 
-This project is a starting point for a Flutter application.
+`2. Details Screen (exam is over)`
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+`3. Details Screen (exam is active)`
