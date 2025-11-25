@@ -1,16 +1,15 @@
-# laboratory_exercise_2
+# Laboratory exercise
 
-A new Flutter project.
+<img width="6912" height="2689" alt="Screens - lab2" src="https://github.com/user-attachments/assets/ea6a269b-e2cd-4666-a302-a3c1549051b0" />
 
-## Getting Started
+`1. Categories Screen`
 
-This project is a starting point for a Flutter application.
+`2. Search categories`
 
-A few resources to get you started if this is your first Flutter project:
+`3. Meals Screen`
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+`4. Meal Details Screen`
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+`5. Youtube link for the meal`
+
+`6. Random recipe (by clicking on the icon in the upper right corner on Categories screen)`
