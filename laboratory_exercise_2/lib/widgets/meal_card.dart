@@ -4,11 +4,13 @@ import '../models/meal.dart';
 class MealCard extends StatelessWidget {
   final Meal meal;
   final VoidCallback onTap;
+  final VoidCallback onFavoriteToggle;
 
   const MealCard({
     super.key,
     required this.meal,
     required this.onTap,
+    required this.onFavoriteToggle,
   });
 
   @override
@@ -25,10 +27,33 @@ class MealCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              child: Image.network(
-                meal.mealThumbnail,
-                fit: BoxFit.cover,
-                width: double.infinity,
+              child: Stack(
+                children: [
+                  Image.network(
+                    meal.mealThumbnail,
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                    height: double.infinity,
+                  ),
+                  Positioned(
+                    top: 8,
+                    right: 8,
+                    child: GestureDetector(
+                      onTap: onFavoriteToggle,
+                      child: CircleAvatar(
+                        backgroundColor: Colors.white.withOpacity(0.85),
+                        radius: 20,
+                        child: Icon(
+                          meal.isFavorite
+                              ? Icons.favorite
+                              : Icons.favorite_border,
+                          color: meal.isFavorite ? Colors.red : Colors.black,
+                          size: 24,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             Padding(

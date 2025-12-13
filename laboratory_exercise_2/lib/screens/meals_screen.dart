@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/meal.dart';
+import '../services/favorites_service.dart';
 import '../services/meal_service.dart';
 import '../widgets/meal_card.dart';
 import '../widgets/search_bar.dart';
@@ -16,6 +17,7 @@ class MealsScreen extends StatefulWidget {
 
 class _MealsScreenState extends State<MealsScreen> {
   final MealService _mealService = MealService();
+  final FavoritesService _favoritesService = FavoritesService();
   List<Meal> _meals = [];
   List<Meal> _filteredMeals = [];
   bool _isLoading = true;
@@ -30,9 +32,15 @@ class _MealsScreenState extends State<MealsScreen> {
   Future<void> _loadMeals() async {
     try {
       final meals = await _mealService.getMealsByCategory(widget.category);
+      final favoriteIds = await _favoritesService.loadFavorites();
+
       setState(() {
-        _meals = meals;
-        _filteredMeals = meals;
+        _meals = meals.map((meal) {
+          return meal.copyWith(
+            isFavorite: favoriteIds.contains(meal.mealId),
+          );
+        }).toList();
+        _filteredMeals = _meals;
         _isLoading = false;
       });
     } catch (e) {
@@ -68,7 +76,6 @@ class _MealsScreenState extends State<MealsScreen> {
     }
   }
 
-  @override
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -115,6 +122,7 @@ class _MealsScreenState extends State<MealsScreen> {
                       ),
                     );
                   },
+                  onFavoriteToggle: () => _toggleFavorite(meal),
                 );
               },
             ),
@@ -124,6 +132,17 @@ class _MealsScreenState extends State<MealsScreen> {
     );
   }
 
+  Future<void> _toggleFavorite(Meal meal) async {
+    setState(() {
+      meal.isFavorite = !meal.isFavorite;
+    });
+
+    if (meal.isFavorite) {
+      await _favoritesService.addFavorite(meal.mealId);
+    } else {
+      await _favoritesService.removeFavorite(meal.mealId);
+    }
+  }
 
   @override
   void dispose() {

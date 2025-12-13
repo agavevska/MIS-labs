@@ -8,6 +8,7 @@ class Meal {
   final String? mealInstructions;
   final String? mealYoutube;
   final Map<String, String>? ingredients;
+  bool isFavorite;
 
   Meal({
     required this.mealId,
@@ -18,6 +19,7 @@ class Meal {
     this.mealInstructions,
     this.mealYoutube,
     this.ingredients,
+    this.isFavorite = false,
   });
 
   factory Meal.fromJson(Map<String, dynamic> json) {
@@ -43,6 +45,45 @@ class Meal {
       mealInstructions: json['strInstructions'],
       mealYoutube: json['strYoutube'],
       ingredients: ingredients,
+      isFavorite: json['isFavorite'] ?? false,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'idMeal': mealId,
+      'strMeal': mealName,
+      'strMealThumb': mealThumbnail,
+      'strCategory': mealCategory,
+      'strArea': mealArea,
+      'strInstructions': mealInstructions,
+      'strYoutube': mealYoutube,
+      'ingredients': ingredients,
+      'isFavorite': isFavorite,
+    };
+  }
+
+  Meal copyWith({
+    String? mealId,
+    String? mealName,
+    String? mealThumbnail,
+    String? mealCategory,
+    String? mealArea,
+    String? mealInstructions,
+    String? mealYoutube,
+    Map<String, String>? ingredients,
+    bool? isFavorite,
+  }) {
+    return Meal(
+      mealId: mealId ?? this.mealId,
+      mealName: mealName ?? this.mealName,
+      mealThumbnail: mealThumbnail ?? this.mealThumbnail,
+      mealCategory: mealCategory ?? this.mealCategory,
+      mealArea: mealArea ?? this.mealArea,
+      mealInstructions: mealInstructions ?? this.mealInstructions,
+      mealYoutube: mealYoutube ?? this.mealYoutube,
+      ingredients: ingredients ?? this.ingredients,
+      isFavorite: isFavorite ?? this.isFavorite,
     );
   }
 }

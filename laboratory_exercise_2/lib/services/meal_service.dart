@@ -76,4 +76,23 @@ class MealService {
     //return null;
     throw Exception('Failed to load random meal');
   }
+
+  Future<Meal?> getMealById(String mealId) async {
+    try {
+      final response = await http.get(
+        Uri.parse('https://www.themealdb.com/api/json/v1/1/lookup.php?i=$mealId'),
+      );
+
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        if (data['meals'] != null && data['meals'].isNotEmpty) {
+          return Meal.fromJson(data['meals'][0]);
+        }
+      }
+      return null;
+    } catch (e) {
+      print('Error fetching meal: $e');
+      return null;
+    }
+  }
 }

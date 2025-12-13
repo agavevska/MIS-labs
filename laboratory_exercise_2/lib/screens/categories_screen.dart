@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/category.dart';
 import '../services/meal_service.dart';
 import '../widgets/category_card.dart';
+import 'favorites_screen.dart';
 import 'meals_screen.dart';
 import 'meal_details_screen.dart';
 
@@ -94,6 +95,18 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             icon: const Icon(Icons.menu_book_sharp),
             tooltip: 'Random recipe',
             onPressed: _showRandomMeal,
+          ),
+          IconButton(
+            icon: const Icon(Icons.favorite),
+            tooltip: 'Favorite recipes',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const FavoritesScreen(),
+                ),
+              );
+            },
           ),
         ],
         elevation: 0,
