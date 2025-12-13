@@ -19,10 +19,9 @@
 
 `1. Categories Screen`
 
-`2. Favorites Screen (by clicking on the icon in the upper right corner on Categories screen)``
+`2. Favorites Screen (by clicking on the icon in the upper right corner on Categories screen)`
 
 `3. Meals Screen (you can see the favorites)`
 
 `4. Notification Screen`
 
-`6. Random recipe (by clicking on the icon in the upper right corner on Categories screen)`
